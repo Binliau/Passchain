@@ -7,3 +7,15 @@ services:
     volumes:
       - .:/app
     tty: true
+
+  frontend:
+    build:
+      context: ./frontend
+    working_dir: /app
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - hardhat
